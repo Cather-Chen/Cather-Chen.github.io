@@ -21,42 +21,64 @@
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="icon" type="image/png" href="images/Yale.png">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
 </head>
 
 <body>
-  <table style="width:100%;max-width:950px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+
+<!----TopBar-->
+
+
+<div class="top-bar">
+  <div class="navbar-header" style="font-size:1.2em;margin-left: 50px;"> Jialin Chen
+  </div  style="font-size:1.3em">
+  <a href="#About">About</a>
+  <a href="#Selected Publications">Publications</a>
+  <a href="#Experience">Experience</a>
+  <a href="#Teaching">Teaching</a>
+  <a href="#Service">Service</a>
+</div>
+
+
+<div class="container" id="About">
+  <table style="width:100%;max-width:950px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto"><tbody>
     <tr style="padding:0px">
       <td style="padding:0px">
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
           <tr style="padding:0px">
             <td style="padding:2.5%;width:63%;vertical-align:middle">
-              <p style="text-align:center">
+              <!-- <p style="text-align:center;margin-top: 50px;">
                 <name>Jialin Chen</name>
-              </p>
-                <p>I am Jialin Chen, a second-year computer science Ph.D. student at <a href="https://cpsc.yale.edu/">Yale University</a> advised by Professor <a href="https://www.cs.yale.edu/homes/ying-rex/">Rex Ying</a>.</p>
-                <p>I am generally interested in deep learning on graph-structured data, including: 
+              </p> -->
+                <p style="margin-top: 80px">I am a computer science Ph.D. student at <a href="https://cpsc.yale.edu/">Yale University</a> advised by Professor <a href="https://www.cs.yale.edu/homes/ying-rex/">Rex Ying</a>. 
+                Before that, I obtained my B.S. degree at Shanghai Jiao Tong University (SJTU) in 2022. I majored in mathematics and applied mathematics (<a href="https://en.zhiyuan.sjtu.edu.cn/en">Zhiyuan Honors Program</a>).
+                <p>I am generally interested in <strong>Large Language Models (LLMs)</strong> and <strong>Graph Foundation Models (GFMs)</strong>, including: 
                     <ul>
-                        <li> graph representation learning and efficient pretraining on graphs,</li>
-                        <li> explainability and trustworthiness of graph models,</li>
-                        <li> graph learning applications</li>
+                        <li> Developing <strong style="color: darkblue;">large-scale foundation models</strong> tailored for diverse graph-structured data</li>
+                        <li> Designing efficient <strong style="color: darkblue;">graph-aware Retireval Augmented Generation (RAG)</strong> to enhance LLM reasoning abilities</li>
+                        <li> Applying advanced graph models to real-world applications, such as <strong style="color: darkblue;">retail product networks</strong> and <strong style="color: darkblue;">recommendation systems</strong></li>
+                        <li> Advancing LLM capabilities in <strong style="color: darkblue;">temporal reasoning</strong> and <strong style="color: darkblue;">time series forecasting</strong> </li>
+                        <li> Improving AI models in terms of <strong style="color: darkblue;">trustworthiness, transparency, and reliability</strong></li>
                     </ul>
                 </p> 
-
-                <p>Previously, I obtained my B.S. degree at Shanghai Jiao Tong University (SJTU) in 2022. I majored in mathematics and applied mathematics (<a href="https://en.zhiyuan.sjtu.edu.cn/en">Zhiyuan Honors Program</a>)
+                <p> If you share similar interests or work in related areas, feel free to reach out. I am always open to collaboration!
 
               <p style="text-align:center">
-                <a href="mailto:jialin.chen@yale.edu">Email</a> &nbsp/&nbsp
+                <a href="mailto:jialin.chen@yale.edu"><i class="fas fa-fw fa-envelope" aria-hidden="true"></i> Email</a> &nbsp/&nbsp
                 <!-- <a href="https://scholar.google.com/citations?user=N1-l4GsAAAAJ&hl=en&oi=ao">Google Scholar</a> &nbsp/&nbsp -->
-                <a href="https://www.linkedin.com/in/jialin-chen-72441021b/">LinkedIn</a> &nbsp/&nbsp
-                <a href="https://github.com/Cather-Chen">Github</a> &nbsp/&nbsp
+                <a href="https://www.linkedin.com/in/jialin-chen-72441021b/"><i class="fa-brands fa-linkedin"></i> LinkedIn</a> &nbsp/&nbsp
+                <a href="https://github.com/Cather-Chen"><i class="fab fa-fw fa-github" aria-hidden="true"></i> Github</a> &nbsp/&nbsp
+                <a href="https://scholar.google.com/citations?hl=en&user=rHyMKPYAAAAJ&view_op=list_works&sortby=pubdate"><i class="fas fa-fw fa-graduation-cap" aria-hidden="true"></i> Google Scholar</a>
               </p>
             </td>
             <td style="padding:2.5%;width:25%;max-width:25%">
               <a href="images/headshot.JPG"><img style="width:100%;max-width:100%; border-radius:50%" alt="profile photo" src="images/headshot.JPG" class="hoverZoomLink"></a>
             </td>
           </tr>
-        </tbody></table>
-
+        </tbody>
+      </table> 
+    </div>
 
 
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
@@ -64,28 +86,120 @@
             <td style="padding:20px;width:100%;vertical-align:middle">
               <heading><font color="red">News</font></heading>
               <ul>
-                <li>I am actively looking for research intern opportunities for summer 2024.</b></li> 
+                <li>I am actively looking for research internship position for summer 2025. Please feel free to contact me if you have any opportunities.</b></li> 
               </ul>
             </td>
           </tr>
-          </tbody></table>
+          </tbody>
+        </table>
 
-
+          <div class="container" id="Selected Publications">
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
             <tr>
             <td style="padding:20px;width:100%;vertical-align:middle">
-              <heading>Research</heading>
+              <h2 style="font-size:1.8em; font-weight:bold; border-bottom:2px solid #333; padding-bottom:10px; margin-bottom:20px;">
+                <i class="fas fa-search" style="margin-right:10px; color:#555;"></i>Selected Publications
+              </h2> 
               (* denotes equal contribution)
             </td>
           </tr>
-        </tbody></table>
+        </tbody>
+      </table>
 
 
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-				
+          <!------------ GFSE ----------->
+          <tr>
+            <td class="tdimg" style="padding:20px;width:10%;vertical-align:middle">
+              <img src='images/publication/GFSE.png' style="width: 400px; height: auto;"> 
+            </td>
+            <td class="tdcontent" style="padding:20px;width:80%;vertical-align:middle">
+              <p>
+                <a href="https://arxiv.org/abs/2404.01340">
+                  <papertitle>GFSE: A Foundational Model For Graph Structural Encoding</papertitle>
+                </a>
+                <br>
+                <strong>Jialin Chen</strong>, Haolan Zuo, Haoyu Peter Wang, Siqi Miao, Pan Li, Rex Ying
+                <br>
+              </p>
+              <div class="paper" id="GFSE">
+                <a href="https://openreview.net/forum?id=JQT6iGrXTh"><img src="https://img.shields.io/badge/-arXiv-grey?logo=gitbook&amp;logoColor=white" alt="Paper" /></a> &nbsp/&nbsp
+                <a href=""><img src="https://img.shields.io/badge/-Github-grey?logo=github" alt="Github" /></a>
+              </div>
+
+            </td>
+          </tr>
+          
+           <!------------- LitFM ----------->
+          <tr>
+            <td class="tdimg" style="padding:20px;width:10%;vertical-align:middle">
+              <img src='images/publication/LitFM.png' style="width: 400px; height: auto;"> 
+            </td>
+            <td class="tdcontent" style="padding:20px;width:80%;vertical-align:middle">
+              <p>
+                <a href="https://arxiv.org/abs/2404.01340">
+                  <papertitle>LitFM: A Retrieval Augmented Structure-aware Foundation Model For Citation Graphs</papertitle>
+                </a>
+                <br>
+                 Jiasheng Zhang, <strong>Jialin Chen</strong>, Ali Maatouk, Ngoc Bui, Qianqian Xie, Leandros Tassiulas, Jie Shao, Hua Xu, Rex Ying
+                <br>
+              </p>
+              <div class="paper" id="LitFM">
+                <a href="https://arxiv.org/abs/2409.12177"><img src="https://img.shields.io/badge/-arXiv-grey?logo=gitbook&amp;logoColor=white" alt="Paper" /></a> &nbsp/&nbsp
+                <a href=""><img src="https://img.shields.io/badge/-Github-grey?logo=github" alt="Github" /></a>
+              </div>
+
+            </td>
+          </tr>
+
+          <!------------ CCM ----------->
+          <tr>
+            <td class="tdimg" style="padding:20px;width:10%;vertical-align:middle">
+              <img src='images/publication/CCM.png' style="width: 400px; height: auto;"> 
+            </td>
+            <td class="tdcontent" style="padding:20px;width:80%;vertical-align:middle">
+              <p>
+                <a href="https://arxiv.org/abs/2404.01340">
+                  <papertitle>From Similarity to Superiority: Channel Clustering for Time Series Forecasting</papertitle>
+                </a>
+                <br>
+                <strong>Jialin Chen</strong>, Jan Eric Lenssen, Aosong Feng, Weihua Hu, Matthias Fey, Leandros Tassiulas, Jure Leskovec, Rex Ying
+                <br>
+              </p>
+              <div class="paper" id="CCM">
+                <a href="https://arxiv.org/abs/2404.01340"><img src="https://img.shields.io/badge/-arXiv-grey?logo=gitbook&amp;logoColor=white" alt="Paper" /></a> &nbsp/&nbsp
+                <a href="https://github.com/Graph-and-Geometric-Learning/TimeSeriesCCM"><img src="https://img.shields.io/badge/-Github-grey?logo=github" alt="Github" /></a>
+              </div>
+
+            </td>
+          </tr>
+          
+          <!------------ DTGB ----------->
+          <tr>
+            <td class="tdimg" style="padding:20px;width:10%;vertical-align:middle">
+              <img src='images/publication/DTGB.png' style="width: 400px; height: auto;"> 
+            </td>
+            <td class="tdcontent" style="padding:20px;width:80%;vertical-align:middle">
+              <p>
+                <a href="https://arxiv.org/abs/2406.12072">
+                  <papertitle>DTGB: A Comprehensive Benchmark for Dynamic Text-Attributed Graphsy</papertitle>
+                </a>
+                <br>
+                Jiasheng Zhang, <strong>Jialin Chen</strong>, Menglin Yang, Aosong Feng, Shuang Liang, Jie Shao, Rex Ying
+                <br>
+              </p>
+              <div class="paper" id="DTGB">
+                <a href="https://arxiv.org/abs/2406.12072"><img src="https://img.shields.io/badge/-arXiv-grey?logo=gitbook&amp;logoColor=white" alt="Paper" /></a> &nbsp/&nbsp
+                <a href="https://github.com/zjs123/DTGB"><img src="https://img.shields.io/badge/-Github-grey?logo=github" alt="Github" /></a>
+              </div>
+
+            </td>
+          </tr>
+
+          <!------------ TempME ----------->
           <tr>
             <td class="tdimg" style="padding:20px;width:35%;vertical-align:middle">
-              <img src='images/publication/TempME.png'>
+              <img src='images/publication/TempME.png' style="width: 400px; height: auto;">
             </td>
             <td class="tdcontent" style="padding:20px;width:65%;vertical-align:middle">
               <p>
@@ -95,22 +209,20 @@
                 <br>
                 <strong>Jialin Chen</strong>, Rex Ying
                 <br>
-                <em>NeurIPS</em>, 2023
-                <br>
               </p>
               <div class="paper" id="TempME">
-                <a href="https://arxiv.org/abs/2310.19324">paper</a> &nbsp/&nbsp
-                <a href="https://github.com/Cather-Chen/TempME">code</a>
+                <a href="https://arxiv.org/abs/2310.19324"><img src="https://img.shields.io/badge/-arXiv-grey?logo=gitbook&amp;logoColor=white" alt="Paper" /></a> &nbsp/&nbsp
+                <a href="https://github.com/Cather-Chen/TempME"><img src="https://img.shields.io/badge/-Github-grey?logo=github" alt="Github" /></a>
               </div>
 
             </td>
           </tr>
 
 
-
+          <!------------ D4Explainer ----------->
           <tr>
             <td class="tdimg" style="padding:20px;width:35%;vertical-align:middle">
-              <img src='images/publication/D4Explainer.png'>
+              <img src='images/publication/D4Explainer.png' style="width: 400px; height: auto;">
             </td>
             <td class="tdcontent" style="padding:20px;width:65%;vertical-align:middle">
               <p>
@@ -120,20 +232,43 @@
                 <br>
                 <strong>Jialin Chen</strong>, Shirley Wu, Abhijit Gupta, Rex Ying
                 <br>
-                <em>NeurIPS</em>, 2023
-                <br>
               </p>
               <div class="paper" id="D4Explainer">
-                <a href="https://arxiv.org/abs/2310.19321">paper</a> &nbsp/&nbsp
-                <a href="https://github.com/Cather-Chen/D4Explainer">code</a>
+                <a href="https://arxiv.org/abs/2310.19321"><img src="https://img.shields.io/badge/-arXiv-grey?logo=gitbook&amp;logoColor=white" alt="Paper" /></a> &nbsp/&nbsp
+                <a href="https://github.com/Cather-Chen/D4Explainer"><img src="https://img.shields.io/badge/-Github-grey?logo=github" alt="Github" /></a>
               </div>
 
             </td>
           </tr>
 
+
+
+          <!------------ Chain ----------->
           <tr>
             <td class="tdimg" style="padding:20px;width:35%;vertical-align:middle">
-              <img src='images/publication/generative_survey.png'>
+              <img src='images/publication/logical_reasoning.png' style="width: 400px; height: auto;">
+            </td>
+            <td class="tdcontent" style="padding:20px;width:65%;vertical-align:middle">
+              <p>
+                <a href="https://arxiv.org/abs/2306.12069">
+                  <papertitle>Modeling Hierarchical Reasoning Chains by Linking Discourse Units and Key Phrases for Reading Comprehension</papertitle>
+                </a>
+                <br>
+                <strong>Jialin Chen</strong>, Zhuosheng Zhang, Hai Zhao
+                <br>
+              </p>
+              <div class="paper" id="spherical">
+                <a href="https://arxiv.org/abs/2306.12069"><img src="https://img.shields.io/badge/-arXiv-grey?logo=gitbook&amp;logoColor=white" alt="Paper" /></a> &nbsp/&nbsp
+                <a href="https://github.com/cather-chen/logical-reasoning-graph"><img src="https://img.shields.io/badge/-Github-grey?logo=github" alt="Github" /></a>
+              </div>
+
+            </td>
+          </tr>
+
+          <!------------ Explanation Survey ----------->
+          <tr>
+            <td class="tdimg" style="padding:20px;width:35%;vertical-align:middle">
+              <img src='images/publication/generative_survey.png' style="width: 400px; height: auto;">
             </td>
             <td class="tdcontent" style="padding:20px;width:65%;vertical-align:middle">
               <p>
@@ -143,19 +278,18 @@
                 <br>
                 <strong>Jialin Chen</strong>, Kenza Amara, Junchi Yu, Rex Ying
                 <br>
-                <em>IEEE Data Engineering Bulletin</em>, 2023
+                <em style="color: darkblue;">IEEE Data Engineering Bulletin, 2023</em>
                 <br>
               </p>
               <div class="paper" id="generative_survey">
-                <a href="https://arxiv.org/abs/2311.05764">paper</a> &nbsp/&nbsp
-                <a href="https://github.com/DS3Lab/GraphFramEx">code</a>
+                <a href="https://arxiv.org/abs/2311.05764"><img src="https://img.shields.io/badge/-arXiv-grey?logo=gitbook&amp;logoColor=white" alt="Paper" /></a> &nbsp/&nbsp
+                <a href="https://github.com/DS3Lab/GraphFramEx"><img src="https://img.shields.io/badge/-Github-grey?logo=github" alt="Github" /></a>
               </div>
-
             </td>
           </tr>
 
-    
-          <tr>
+          
+          <!-- <tr>
             <td class="tdimg" style="padding:20px;width:35%;vertical-align:middle">
               <img src='images/publication/spherical_needlet.png'>
             </td>
@@ -176,49 +310,91 @@
               </div>
 
             </td>
-          </tr>
+          </tr> -->
 
-
-          <tr>
-            <td class="tdimg" style="padding:20px;width:35%;vertical-align:middle">
-              <img src='images/publication/logical_reasoning.png'>
-            </td>
-            <td class="tdcontent" style="padding:20px;width:65%;vertical-align:middle">
-              <p>
-                <a href="https://arxiv.org/abs/2306.12069">
-                  <papertitle>Modeling Hierarchical Reasoning Chains by Linking Discourse Units and Key Phrases for Reading Comprehension</papertitle>
-                </a>
-                <br>
-                <strong>Jialin Chen</strong>, Zhuosheng Zhang, Hai Zhao
-                <br>
-                <em>COLING</em>, 2022
-                <br>
-              </p>
-              <div class="paper" id="spherical">
-                <a href="https://arxiv.org/abs/2306.12069">paper</a> &nbsp/&nbsp
-                <a href="https://github.com/cather-chen/logical-reasoning-graph">code</a>
-              </div>
-
-            </td>
-          </tr>
 
         </tbody></table>
+      </div>
 
-
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+      <div class="container" id="Experience">
+        <table style="width:100%; border:0; border-spacing:0; border-collapse:separate; margin:auto;">
+          <tbody>
             <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-              <heading>Teaching</heading>
-              <ul>
-                <li><strong>Teaching Assistant</strong>, <em>2023 Fall</em>, Deep Learning on Graph-Structured Data (CPSC 483) <a href="https://graph-and-geometric-learning.github.io/cpsc483-583-website-23fall/#/">Course Website</a></li>
-                <li><strong>Teaching Assistant</strong>, <em>2023 Spring</em>, Trustworthy Deep Learning (CPSC 680)</li>
-              </ul>
-            </td>
-          </tr>
-        </tbody></table>
+              <td style="padding:20px; width:100%; vertical-align:middle;">
+                <h2 style="font-size:1.8em; font-weight:bold; border-bottom:2px solid #333; padding-bottom:10px; margin-bottom:20px;">
+                  <i class="fas fa-briefcase" style="margin-right:10px; color:#555;"></i>Experience
+                </h2>
+        
+                <!-- Applied Scientist Intern -->
+                <div style="margin-bottom:25px;">
+                  <span style="font-weight:bold; font-size:1.3em">Applied Scientist Intern</span>
+                  <br> <span style="display:inline-block; margin-right:10px; font-size:1.1em"> Amazon Inc.,  <em> 2024.05 - Now</em></span> <br>
+                  <span style="line-height:1.6;">
+                    <li> Proposed a novel <strong style="color: darkblue;">graph-aware retriever</strong> to enhance LLMs’ capabilities in <strong style="color: darkblue;">question answering</strong> and <strong style="color: darkblue;">complex reasoning</strong> on knowledge graphs;</li>
+                    <li> Developed <strong style="color: darkblue;">joint training</strong> of graph retriever and LLM reasoner in Graph RAG pipeline, improved the model's <strong style="color: darkblue;">generalizability to open-domain scenario</strong>.</li>
+
+                  </span>
+                </div>
+      
+        
+                <!-- Machine Learning Intern -->
+                <div style="margin-bottom:25px;">
+                  <span style="font-weight:bold; font-size:1.3em;">Machine Learning Intern</span>
+                  <br> 
+                  <span style="display:inline-block; margin-right:10px; font-size:1.1em;">Kumo.AI Inc., <em>2023.05 - 2023.08</em></span> 
+                  <br>
+                  <span style="line-height:1.6;">
+                    <li> Worked on improving <strong style="color: darkblue;">time series forecasting</strong> on retail <strong style="color: darkblue;">tabular dataset</strong>;</li>
+                    <li> Developed an <strong style="color: darkblue;">autoregressive generative model</strong> for custom time series, contributing to <strong style="color: darkblue;">feature development</strong> related to forecasting queries.</li>
+                  </span>
+                </div>
+        
+              </td>
+            </tr>
+          </tbody>
+        </table> 
+      </div>
+
+
+
+      <div class="container" id="Teaching">
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tbody>
+            <tr>
+              <td style="padding:20px;width:100%;vertical-align:middle">
+                <h2 style="font-size:1.8em; font-weight:bold; border-bottom:2px solid #333; padding-bottom:10px; margin-bottom:20px;">
+                  <i class="fas fa-chalkboard-teacher" style="margin-right:10px; color:#555;"></i>Teaching
+                </h2>
+                <ul>
+                  <li><strong>Teaching Assistant</strong>, <em>2023 Fall</em>, Deep Learning on Graph-Structured Data (CPSC 483) <a href="https://graph-and-geometric-learning.github.io/cpsc483-583-website-23fall/#/"> Course Website</a></li>
+                  <li><strong>Teaching Assistant</strong>, <em>2023 Spring</em>, Trustworthy Deep Learning (CPSC 680) <a href="https://graph-and-geometric-learning.github.io/cpsc471-571-website-24spring/#/"> Course Website</a></li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table> 
+      </div>
+
+
+
+      <div class="container" id="Services">
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr>
+          <td style="padding:20px;width:100%;vertical-align:middle">
+            <h2 style="font-size:1.8em; font-weight:bold; border-bottom:2px solid #333; padding-bottom:10px; margin-bottom:20px;">
+              <i class="fas fa-pen" style="margin-right:10px; color:#555;"></i>Academic Services
+            </h2>
+            <ul>
+              <li><strong>Conference Reviewer:</strong> NeurIPS, ICML, ICLR, KDD, AAAI, LoG</li>
+              <li><strong>Journal Reviewer:</strong>  IEEE Transactions on Artificial Intelligence, Journal of Biomedical Informatics </li>
+            </ul>
+          </td>
+        </tr>
+      </tbody></table>
       </td>
     </tr>
-  </table>
+    </table>
+    </div>
 
 <script xml:space="preserve" language="JavaScript">
 hideallbibs();
