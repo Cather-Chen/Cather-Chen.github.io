@@ -22,6 +22,339 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="icon" type="image/png" href="images/Yale.png">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --surface: #ffffff;
+      --surface-soft: #fbfcff;
+      --text: #1f2937;
+      --muted: #5b6473;
+      --line: #e5eaf2;
+      --blue: #1f5fbf;
+      --blue-soft: #edf3ff;
+      --shadow: 0 6px 24px rgba(15, 23, 42, 0.06);
+      --radius: 16px;
+    }
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
+    body {
+      background: linear-gradient(180deg, #f7f9fc 0%, #f3f6fb 100%) !important;
+      color: var(--text);
+      font-family: 'Lato', Verdana, Helvetica, sans-serif !important;
+      line-height: 1.6;
+      padding-top: 72px;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    .container {
+      width: min(900px, calc(100% - 20px));
+      margin: 16px auto;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 6px 0 10px 0;
+      scroll-margin-top: 86px;
+    }
+    #About {
+      margin-top: 8px;
+    }
+    /* Many sections still use nested inline-width tables (70% / 80%). Override them here. */
+    #About > table {
+      width: 96% !important;
+      max-width: none !important;
+    }
+    #About > table > tbody > tr > td > table {
+      width: 100% !important;
+    }
+    #Selected\ Publications > table,
+    #Experience > table,
+    #Teaching > table,
+    #Services > table {
+      width: 94% !important;
+      max-width: none !important;
+    }
+    #About p, #About li {
+      color: #2d3644;
+      line-height: 1.65;
+    }
+    #About ul {
+      margin: 10px 0 8px 0;
+      padding-left: 20px;
+    }
+    #About li {
+      margin-bottom: 6px;
+    }
+    #About img.hoverZoomLink {
+      border: 3px solid #fff;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.12);
+    }
+    .social-links {
+      margin-top: 8px;
+    }
+    .social-links a {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 8px;
+      color: #1f3f7a;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+    .social-links a:hover {
+      background: #eef4ff;
+      color: #133a78;
+    }
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      flex-wrap: wrap;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom: 1px solid rgba(209, 217, 230, 0.9);
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      color: var(--text);
+      text-align: center;
+    }
+    .top-bar .navbar-header {
+      margin-left: 0 !important;
+      margin-right: 14px;
+      font-weight: 700;
+      color: #1f2937;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+    .top-bar a {
+      color: #334155;
+      padding: 7px 10px;
+      border-radius: 8px;
+      font-size: 14px;
+      text-decoration: none;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+    .top-bar a:hover {
+      background: #eef3fb;
+      color: #163f7a;
+    }
+    h2 {
+      color: #1f2937;
+      letter-spacing: -0.01em;
+    }
+    #Experience li, #Teaching li, #Services li {
+      margin-bottom: 6px;
+      line-height: 1.6;
+      color: #2f3745;
+    }
+    #Experience > table, #Teaching > table, #Services > table {
+      margin-bottom: 4px;
+    }
+    #Experience div[style*="margin-bottom:25px"] {
+      padding: 12px 14px;
+      border: 1px solid #e8edf5;
+      border-radius: 12px;
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+    }
+    #Experience div[style*="margin-bottom:25px"] span[style*="font-size:1.05em"] {
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+    #Teaching ul, #Services ul {
+      padding-left: 20px;
+      margin-bottom: 2px;
+    }
+    .pub-toolbar {
+      width: 94%;
+      margin: 0 auto 18px auto;
+      padding: 14px 16px;
+      border: 1px solid #e6e6e6;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #fbfcff 0%, #f7f8fb 100%);
+    }
+    .pub-toolbar p {
+      margin: 0 0 10px 0;
+      color: #444;
+      line-height: 1.5;
+    }
+    .pub-toolbar-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .pub-jump-btn, .pub-tool-btn {
+      border: 1px solid #d2d7e0;
+      background: #fff;
+      color: #2a2f3a;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 0.92em;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+    .pub-jump-btn:hover, .pub-tool-btn:hover {
+      background: #f0f4ff;
+      border-color: #9db3e8;
+      color: #1f3f7a;
+    }
+    .pub-tool-btn {
+      border-style: dashed;
+    }
+    .pub-groups {
+      width: 94%;
+      margin: 0 auto;
+      display: grid;
+      gap: 14px;
+    }
+    .pub-group {
+      border: 1px solid #e2e6ef;
+      border-radius: 14px;
+      background: #fff;
+      box-shadow: 0 3px 12px rgba(16, 24, 40, 0.04);
+      overflow: hidden;
+      scroll-margin-top: 72px;
+    }
+    .pub-group summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      background: linear-gradient(90deg, #fafcff 0%, #f6f8fc 100%);
+      border-bottom: 1px solid transparent;
+    }
+    .pub-group summary::-webkit-details-marker {
+      display: none;
+    }
+    .pub-group[open] summary {
+      border-bottom-color: #e8ebf2;
+    }
+    .pub-group-summary {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .pub-group-title-wrap {
+      min-width: 0;
+    }
+    .pub-group-title {
+      margin: 0;
+      font-size: 1.08em;
+      font-weight: 700;
+      color: #202531;
+      line-height: 1.35;
+    }
+    .pub-group-subtitle {
+      margin-top: 4px;
+      font-size: 0.92em;
+      color: #5d6473;
+      line-height: 1.4;
+    }
+    .pub-group-meta {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .pub-pill {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: 0.82em;
+      font-weight: 600;
+      border: 1px solid #dbe2f2;
+      background: #fff;
+      color: #33415c;
+      white-space: nowrap;
+    }
+    .pub-group-content {
+      padding: 6px 0 10px 0;
+    }
+    .pub-group table {
+      width: 100%;
+    }
+    .pub-group tr {
+      transition: background-color 0.15s ease;
+    }
+    .pub-group tr:hover {
+      background: #fafcff;
+    }
+    .pub-group .tdimg {
+      width: 40% !important;
+      min-width: 300px;
+      padding-right: 10px !important;
+    }
+    .pub-group .tdcontent {
+      width: 55% !important;
+    }
+    .pub-group .paper-box-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+      border: 1px solid #e7ecf5;
+      box-shadow: 0 5px 16px rgba(15, 23, 42, 0.08);
+    }
+    .pub-group .paper {
+      margin-top: 8px;
+    }
+    .pub-group .paper img {
+      border-radius: 6px;
+    }
+    .badge {
+      border-radius: 999px;
+      box-shadow: 0 4px 12px rgba(0, 54, 159, 0.18);
+    }
+    .pub-group-flash {
+      box-shadow: 0 0 0 2px rgba(70, 116, 196, 0.22), 0 6px 18px rgba(16, 24, 40, 0.07);
+    }
+    @media (max-width: 768px) {
+      body {
+        padding-top: 106px;
+      }
+      .container {
+        width: calc(100% - 12px);
+        margin: 10px auto;
+        border-radius: 12px;
+      }
+      .top-bar {
+        justify-content: flex-start;
+        text-align: left;
+        gap: 2px;
+        padding: 8px 10px;
+      }
+      .top-bar .navbar-header {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 2px;
+        text-align: left;
+      }
+      .pub-toolbar, .pub-groups {
+        width: 96%;
+      }
+      .pub-group-summary {
+        flex-direction: column;
+      }
+      .pub-group-meta {
+        gap: 6px;
+      }
+      .pub-group .tdimg,
+      .pub-group .tdcontent {
+        width: auto !important;
+        min-width: 0;
+      }
+      .pub-group .paper-box-image img {
+        max-width: 140px;
+      }
+    }
+  </style>
 
 </head>
 
@@ -37,7 +370,7 @@
   <a href="#Selected Publications">Publications</a>
   <a href="#Experience">Experience</a>
   <a href="#Teaching">Teaching</a>
-  <a href="#Service">Service</a>
+  <a href="#Services">Service</a>
 </div>
 
 
@@ -52,19 +385,20 @@
                 <name>Jialin Chen</name>
               </p> -->
                 <p style="margin-top: 80px">I am a computer science Ph.D. student at <a href="https://cpsc.yale.edu/">Yale University</a> advised by Professor <a href="https://www.cs.yale.edu/homes/ying-rex/">Rex Ying</a>. 
-                Before that, I obtained my B.S. degree at Shanghai Jiao Tong University (SJTU) in 2022. I majored in mathematics and applied mathematics (<a href="https://en.zhiyuan.sjtu.edu.cn/en">Zhiyuan Honors Program</a>).
-                <p>I am generally interested in <strong>Large Language Models (LLMs)</strong> and <strong>Graph Foundation Models (GFMs)</strong>, including: 
+                Before that, I obtained my B.S. degree at Shanghai Jiao Tong University (SJTU) in 2022. I majored in mathematics and applied mathematics (<a href="https://en.zhiyuan.sjtu.edu.cn/en">Zhiyuan Honors Program</a>).</p>
+                <div class="about-interests">
+                  <p>I am generally interested in <strong>Large Language Models (LLMs)</strong> with a focus on enabling reliable reasoning over complex, structured, and dynamic data, including:</p>
                     <ul>
-                        <li> Developing <strong style="color: darkblue;">scalable foundation models</strong> tailored for diverse graph-structured data</li>
-                        <li> Designing efficient <strong style="color: darkblue;">Graph Retireval Augmented Generation (RAG)</strong> to enhance LLM reasoning abilities</li>
-                        <li> Applying advanced graph models to real-world applications, such as <strong style="color: darkblue;">retail product networks</strong> and <strong style="color: darkblue;">recommendation systems</strong></li>
-                        <li> Advancing LLM capabilities in <strong style="color: darkblue;">temporal reasoning</strong> and <strong style="color: darkblue;">time series forecasting</strong> </li>
-                        <li> Improving AI models in terms of <strong style="color: darkblue;">trustworthiness, transparency, and reliability</strong></li>
+                        <li>Developing <strong style="color: darkblue;">scalable foundation models</strong> with inductive biases for <strong style="color: darkblue;">graph, relational, and structured data</strong>, moving beyond sequence-only architectures</li>
+                        <li>Designing efficient <strong style="color: darkblue;">structured Retrieval-Augmented Generation (RAG)</strong> and <strong style="color: darkblue;">tool-integrated reasoning systems</strong> for multi-hop and decision-critical tasks</li>
+                        <li>Exploring <strong style="color: darkblue;">post-training strategies</strong> to improve <strong style="color: darkblue;">faithfulness, calibration, and robustness</strong></li>
+                        <li>Advancing LLM capabilities in <strong style="color: darkblue;">temporal reasoning</strong> and <strong style="color: darkblue;">time-series understanding</strong>, bridging numerical dynamics with semantic modeling</li>
+                        <li>Improving model <strong style="color: darkblue;">trustworthiness, interpretability, and verification</strong>, particularly in high-stakes, real-world deployment scenarios</li>
                     </ul>
-                </p> 
-                <p> If you share similar interests or work in related areas, feel free to reach out. I am always open to collaboration!
+                </div>
+                <p>If you share similar interests or have any job opportunities in related areas, feel free to reach out.</p>
 
-              <p style="text-align:center">
+              <p class="social-links" style="text-align:center">
                 <a href="mailto:jialin.chen@yale.edu"><i class="fas fa-fw fa-envelope" aria-hidden="true"></i> Email</a> &nbsp/&nbsp
                 <!-- <a href="https://scholar.google.com/citations?user=N1-l4GsAAAAJ&hl=en&oi=ao">Google Scholar</a> &nbsp/&nbsp -->
                 <a href="https://www.linkedin.com/in/jialin-chen-72441021b/"><i class="fa-brands fa-linkedin"></i> LinkedIn</a> &nbsp/&nbsp
@@ -106,250 +440,335 @@
       </table>
 
 
-<table style="width:80%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+<div class="pub-toolbar">
+  <p><strong>Publications are organized by research themes</strong></p>
+  <div class="pub-toolbar-row" style="margin-bottom:8px;">
+    <button type="button" class="pub-jump-btn" onclick="focusPublicationGroup('pub-group-interpret')">Interpreting Structural Models</button>
+    <button type="button" class="pub-jump-btn" onclick="focusPublicationGroup('pub-group-relational')">Reasoning over Structured Data</button>
+    <button type="button" class="pub-jump-btn" onclick="focusPublicationGroup('pub-group-temporal')">Temporal Reasoning and Time Series</button>
+  </div>
+  <div class="pub-toolbar-row">
+    <button type="button" class="pub-tool-btn" onclick="togglePublicationGroups(true)">Expand All</button>
+    <button type="button" class="pub-tool-btn" onclick="togglePublicationGroups(false)">Collapse All</button>
+  </div>
+</div>
 
-          <!------------ MTBench ----------->
-          <tr>
-            <td class="tdimg" style="padding:0px;width:50%;vertical-align:middle">
-              <div class="paper-box"><div class="paper-box-image"><div><div class="badge">Preprint</div>
-              <img src="images/publication/mtbench.png" alt="sym" width="100%" /></div></div>
-            </td>
-            <td class="tdcontent" style="padding:20px;width:80%;vertical-align:middle">
-              <p>
-                <a href="https://arxiv.org/abs/2503.16858">
-                  <papertitle>MTBench: A Multimodal Time Series Benchmark for Temporal Reasoning and Question Answering</papertitle>
-                </a>
-                <br>
-                <strong>Jialin Chen</strong>, Aosong Feng, Ziyu Zhao, Juan Garza, Gaukhar Nurbek, Cheng Qin, Ali Maatouk, Leandros Tassiulas, Yifeng Gao, Rex Ying
-                <br>
-              </p>
-              <div class="paper" id="GFSE">
-                <a href="https://arxiv.org/abs/2503.16858"><img src="https://img.shields.io/badge/-arXiv-grey?logo=gitbook&amp;logoColor=white" alt="Paper" /></a> &nbsp/&nbsp
-                <a href="https://github.com/Graph-and-Geometric-Learning/MTBench"><img src="https://img.shields.io/badge/-Github-grey?logo=github" alt="Github" /></a>
-              </div>
+<div class="pub-groups">
+  <details class="pub-group" id="pub-group-interpret" open>
+    <summary>
+      <div class="pub-group-summary">
+        <div class="pub-group-title-wrap">
+          <div class="pub-group-title">Interpreting Structural Models — Identifying Causal Structure</div>
+          <div class="pub-group-subtitle">How to make structured models understandable and auditable: this theme studies mechanisms for identifying salient substructures, causal signals, and faithful explanations behind model decisions.</div>
+        </div>
+        <div class="pub-group-meta">
+          <span class="pub-pill">Theme 1</span>
+        </div>
+      </div>
+    </summary>
+    <div class="pub-group-content">
+      <table style="width:100%;border:0;border-spacing:0;border-collapse:separate;margin:0;"><tbody>
+        <!------------ TempME ----------->
+        <tr>
+          <td class="tdimg" style="padding:20px;width:10%;vertical-align:middle">
+            <div class="paper-box"><div class="paper-box-image"><div><div class="badge">NeurIPS 2023</div>
+            <img src="images/publication/TempME.png" alt="TempME" width="100%" /></div></div></div>
+          </td>
+          <td class="tdcontent" style="padding:20px;width:80%;vertical-align:middle">
+            <p>
+              <a href="https://proceedings.neurips.cc/paper_files/paper/2023/file/5c5bc3553815adb4d1a8a5b8701e41a9-Paper-Conference.pdf">
+                <papertitle>TempME: Towards the Explainability of Temporal Graph Neural Networks via Motif Discovery</papertitle>
+              </a>
+              <br>
+              <strong>Jialin Chen</strong>, Rex Ying
+              <br>
+              <em style="color: darkblue;">NeurIPS 2023</em>
+              <br>
+            </p>
+            <div class="paper" id="TempME">
+              <a href="https://proceedings.neurips.cc/paper_files/paper/2023/file/5c5bc3553815adb4d1a8a5b8701e41a9-Paper-Conference.pdf"><img src="https://img.shields.io/badge/-Paper-grey?logo=readthedocs&amp;logoColor=white" alt="Paper" /></a> &nbsp/&nbsp
+              <a href="https://github.com/Graph-and-Geometric-Learning/TempME"><img src="https://img.shields.io/badge/-Github-grey?logo=github" alt="Github" /></a>
+            </div>
+          </td>
+        </tr>
 
-            </td>
-          </tr>
+        <!------------ D4Explainer ----------->
+        <tr>
+          <td class="tdimg" style="padding:20px;width:10%;vertical-align:middle">
+            <div class="paper-box"><div class="paper-box-image"><div><div class="badge">NeurIPS 2023</div>
+            <img src="images/publication/D4Explainer.png" alt="D4Explainer" width="100%" /></div></div></div>
+          </td>
+          <td class="tdcontent" style="padding:20px;width:80%;vertical-align:middle">
+            <p>
+              <a href="https://proceedings.neurips.cc/paper_files/paper/2023/file/f978c8f3b5f399cae464e85f72e28503-Paper-Conference.pdf">
+                <papertitle>D4Explainer: In-distribution Explanations of Graph Neural Network via Discrete Denoising Diffusion</papertitle>
+              </a>
+              <br>
+              <strong>Jialin Chen</strong>, Shirley Wu, Abhijit Gupta, Rex Ying
+              <br>
+              <em style="color: darkblue;">NeurIPS 2023</em>
+              <br>
+            </p>
+            <div class="paper" id="D4Explainer">
+              <a href="https://proceedings.neurips.cc/paper_files/paper/2023/file/f978c8f3b5f399cae464e85f72e28503-Paper-Conference.pdf"><img src="https://img.shields.io/badge/-Paper-grey?logo=readthedocs&amp;logoColor=white" alt="Paper" /></a> &nbsp/&nbsp
+              <a href="https://github.com/Graph-and-Geometric-Learning/D4Explainer"><img src="https://img.shields.io/badge/-Github-grey?logo=github" alt="Github" /></a>
+            </div>
+          </td>
+        </tr>
 
+        <!------------ Explanation Survey ----------->
+        <tr>
+          <td class="tdimg" style="padding:20px;width:10%;vertical-align:middle">
+            <div class="paper-box"><div class="paper-box-image"><div><div class="badge">IEEE</div>
+            <img src="images/publication/generative_survey.png" alt="Generative Explanations Survey" width="100%" /></div></div></div>
+          </td>
+          <td class="tdcontent" style="padding:20px;width:80%;vertical-align:middle">
+            <p>
+              <a href="https://arxiv.org/abs/2311.05764">
+                <papertitle>Generative Explanations for Graph Neural Network: Methods and Evaluations</papertitle>
+              </a>
+              <br>
+              <strong>Jialin Chen</strong>, Kenza Amara, Junchi Yu, Rex Ying
+              <br>
+              <em style="color: darkblue;">IEEE</em>
+              <br>
+            </p>
+            <div class="paper" id="generative_survey">
+              <a href="https://arxiv.org/abs/2311.05764"><img src="https://img.shields.io/badge/-arXiv-grey?logo=gitbook&amp;logoColor=white" alt="Paper" /></a> &nbsp/&nbsp
+              <a href="https://github.com/GraphFramEx/graphframex"><img src="https://img.shields.io/badge/-Github-grey?logo=github" alt="Github" /></a>
+            </div>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+  </details>
 
-          <!------------ GFSE ----------->
-          <tr>
-            <td class="tdimg" style="padding:20px;width:10%;vertical-align:middle">
-              <div class="paper-box"><div class="paper-box-image"><div><div class="badge">Preprint</div>
-              <img src="images/publication/GFSE.png" alt="sym" width="100%" /></div></div>
-            </td>
-            <td class="tdcontent" style="padding:20px;width:80%;vertical-align:middle">
-              <p>
-                <a href="https://arxiv.org/abs/2504.10917">
-                  <papertitle>GFSE: A Foundational Model For Graph Structural Encoding</papertitle>
-                </a>
-                <br>
-                <strong>Jialin Chen</strong>, Haolan Zuo, Haoyu Peter Wang, Siqi Miao, Pan Li, Rex Ying
-                <br>
-              </p>
-              <div class="paper" id="GFSE">
-                <a href="https://arxiv.org/abs/2504.10917"><img src="https://img.shields.io/badge/-arXiv-grey?logo=gitbook&amp;logoColor=white" alt="Paper" /></a> &nbsp/&nbsp
-                <a href=""><img src="https://img.shields.io/badge/-Github-grey?logo=github" alt="Github" /></a>
-              </div>
+  <details class="pub-group" id="pub-group-relational" open>
+    <summary>
+      <div class="pub-group-summary">
+        <div class="pub-group-title-wrap">
+          <div class="pub-group-title">Reasoning over Structured Data — Aligning Structure with Language Models</div>
+          <div class="pub-group-subtitle">How to align relational structure with language reasoning: this theme develops graph-native representations and retrieval pipelines that inject structural priors into LLMs for robust multi-hop reasoning.</div>
+        </div>
+        <div class="pub-group-meta">
+          <span class="pub-pill">Theme 2</span>
+        </div>
+      </div>
+    </summary>
+    <div class="pub-group-content">
+      <table style="width:100%;border:0;border-spacing:0;border-collapse:separate;margin:0;"><tbody>
+        <!------------ GFSE ----------->
+        <tr>
+          <td class="tdimg" style="padding:20px;width:10%;vertical-align:middle">
+            <div class="paper-box"><div class="paper-box-image"><div><div class="badge">WWW 2026</div>
+            <img src="images/publication/GFSE.png" alt="GFSE" width="100%" /></div></div></div>
+          </td>
+          <td class="tdcontent" style="padding:20px;width:80%;vertical-align:middle">
+            <p>
+              <a href="https://arxiv.org/abs/2504.10917">
+                <papertitle>Towards A Universal Graph Structural Encoder</papertitle>
+              </a>
+              <br>
+              <strong>Jialin Chen</strong>, Haolan Zuo, Haoyu Peter Wang, Siqi Miao, Pan Li, Rex Ying
+              <br>
+              <em style="color: darkblue;">WWW 2026</em>
+              <br>
+            </p>
+            <div class="paper" id="GFSE">
+              <a href="https://arxiv.org/abs/2504.10917"><img src="https://img.shields.io/badge/-arXiv-grey?logo=gitbook&amp;logoColor=white" alt="Paper" /></a> &nbsp/&nbsp
+              <a href=""><img src="https://img.shields.io/badge/-Github-grey?logo=github" alt="Github" /></a>
+            </div>
+          </td>
+        </tr>
 
-            </td>
-          </tr>
-          
-           <!------------- LitFM ----------->
-          <tr>
-            <td class="tdimg" style="padding:20px;width:10%;vertical-align:middle">
-              <div class="paper-box"><div class="paper-box-image"><div><div class="badge">KDD 2025</div>
-              <img src="images/publication/LitFM.png" alt="sym" width="100%" /></div></div>
-            </td>
-            <td class="tdcontent" style="padding:20px;width:80%;vertical-align:middle">
-              <p>
-                <a href="https://arxiv.org/abs/2409.12177">
-                  <papertitle>LitFM: A Retrieval Augmented Structure-aware Foundation Model For Citation Graphs</papertitle>
-                </a>
-                <br>
-                 Jiasheng Zhang, Ali Maatouk, <strong>Jialin Chen</strong>, Ngoc Bui, Qianqian Xie, Leandros Tassiulas, Jie Shao, Hua Xu, Rex Ying
-                <br>
-              </p>
-              <div class="paper" id="LitFM">
-                <a href="https://arxiv.org/abs/2409.12177"><img src="https://img.shields.io/badge/-arXiv-grey?logo=gitbook&amp;logoColor=white" alt="Paper" /></a> &nbsp/&nbsp
-                <a href=""><img src="https://img.shields.io/badge/-Github-grey?logo=github" alt="Github" /></a>
-              </div>
+        <!------------ GRIL ----------->
+        <tr>
+          <td class="tdimg" style="padding:20px;width:10%;vertical-align:middle">
+            <div class="paper-box"><div class="paper-box-image"><div><div class="badge">EMNLP 2025</div>
+            <img src="images/publication/gril.png" alt="GRIL" width="100%" /></div></div></div>
+          </td>
+          <td class="tdcontent" style="padding:20px;width:80%;vertical-align:middle">
+            <p>
+              <a href="https://arxiv.org/abs/2509.16502">
+                <papertitle>GRIL: Knowledge Graph Retrieval-Integrated Learning with Large Language Models</papertitle>
+              </a>
+              <br>
+              <strong>Jialin Chen</strong>, H. Zhang, S. Yun, A. Mottini, R. Ying, X. Song, V. N. Ioannidis, Z. Li, Q. Cui
+              <br>
+              <em style="color: darkblue;">EMNLP 2025</em>
+              <br>
+            </p>
+            <div class="paper" id="GRIL">
+              <a href="https://arxiv.org/abs/2509.16502"><img src="https://img.shields.io/badge/-arXiv-grey?logo=gitbook&amp;logoColor=white" alt="Paper" /></a> &nbsp/&nbsp
+              <a href=""><img src="https://img.shields.io/badge/-Github-grey?logo=github" alt="Github" /></a>
+            </div>
+          </td>
+        </tr>
 
-            </td>
-          </tr>
+        <!------------- LitFM ----------->
+        <tr>
+          <td class="tdimg" style="padding:20px;width:10%;vertical-align:middle">
+            <div class="paper-box"><div class="paper-box-image"><div><div class="badge">KDD 2025</div>
+            <img src="images/publication/LitFM.png" alt="LitFM" width="100%" /></div></div></div>
+          </td>
+          <td class="tdcontent" style="padding:20px;width:80%;vertical-align:middle">
+            <p>
+              <a href="https://dl.acm.org/doi/abs/10.1145/3711896.3737028">
+                <papertitle>LitFM: A Retrieval Augmented Structure-aware Foundation Model For Citation Graphs</papertitle>
+              </a>
+              <br>
+              Jiasheng Zhang, <strong>Jialin Chen</strong>, Ali Maatouk, Ngoc Bui, Qianqian Xie, Leandros Tassiulas, Jie Shao, Hua Xu, Rex Ying
+              <br>
+              <em style="color: darkblue;">KDD 2025</em>
+              <br>
+            </p>
+            <div class="paper" id="LitFM">
+              <a href="https://dl.acm.org/doi/abs/10.1145/3711896.3737028"><img src="https://img.shields.io/badge/-Paper-grey?logo=readthedocs&amp;logoColor=white" alt="Paper" /></a> &nbsp/&nbsp
+              <a href=""><img src="https://img.shields.io/badge/-Github-grey?logo=github" alt="Github" /></a>
+            </div>
+          </td>
+        </tr>
 
-          <!------------ CCM ----------->
-          <tr>
-            <td class="tdimg" style="padding:20px;width:10%;vertical-align:middle">
-              <div class="paper-box"><div class="paper-box-image"><div><div class="badge">NeurIPS 2024</div>
-              <img src="images/publication/CCM.png" alt="sym" width="100%" /></div></div>
-            </td>
-            <td class="tdcontent" style="padding:20px;width:80%;vertical-align:middle">
-              <p>
-                <a href="https://arxiv.org/abs/2404.01340">
-                  <papertitle>From Similarity to Superiority: Channel Clustering for Time Series Forecasting</papertitle>
-                </a>
-                <br>
-                <strong>Jialin Chen</strong>, Jan Eric Lenssen, Aosong Feng, Weihua Hu, Matthias Fey, Leandros Tassiulas, Jure Leskovec, Rex Ying
-                <br>
-              </p>
-              <div class="paper" id="CCM">
-                <a href="https://arxiv.org/abs/2404.01340"><img src="https://img.shields.io/badge/-arXiv-grey?logo=gitbook&amp;logoColor=white" alt="Paper" /></a> &nbsp/&nbsp
-                <a href="https://github.com/Graph-and-Geometric-Learning/TimeSeriesCCM"><img src="https://img.shields.io/badge/-Github-grey?logo=github" alt="Github" /></a>
-              </div>
+        <!------------ DTGB ----------->
+        <tr>
+          <td class="tdimg" style="padding:20px;width:10%;vertical-align:middle">
+            <div class="paper-box"><div class="paper-box-image"><div><div class="badge">NeurIPS 2024 DB track</div>
+            <img src="images/publication/DTGB.png" alt="DTGB" width="100%" /></div></div></div>
+          </td>
+          <td class="tdcontent" style="padding:20px;width:80%;vertical-align:middle">
+            <p>
+              <a href="https://arxiv.org/abs/2406.12072">
+                <papertitle>DTGB: A Comprehensive Benchmark for Dynamic Text-Attributed Graphs</papertitle>
+              </a>
+              <br>
+              Jiasheng Zhang, <strong>Jialin Chen</strong>, Menglin Yang, Aosong Feng, Shuang Liang, Jie Shao, Rex Ying
+              <br>
+              <em style="color: darkblue;">NeurIPS 2024 DB track</em>
+              <br>
+            </p>
+            <div class="paper" id="DTGB">
+              <a href="https://arxiv.org/abs/2406.12072"><img src="https://img.shields.io/badge/-arXiv-grey?logo=gitbook&amp;logoColor=white" alt="Paper" /></a> &nbsp/&nbsp
+              <a href="https://github.com/zjs123/DTGB"><img src="https://img.shields.io/badge/-Github-grey?logo=github" alt="Github" /></a>
+            </div>
+          </td>
+        </tr>
 
-            </td>
-          </tr>
-          
-          <!------------ DTGB ----------->
-          <tr>
-            <td class="tdimg" style="padding:20px;width:10%;vertical-align:middle">
-              <div class="paper-box"><div class="paper-box-image"><div><div class="badge">NeurIPS DB 2024</div>
-              <img src="images/publication/DTGB.png" alt="sym" width="100%" /></div></div>
-            </td>
-            
-            <td class="tdcontent" style="padding:20px;width:80%;vertical-align:middle">
-              <p>
-                <a href="https://arxiv.org/abs/2406.12072">
-                  <papertitle>DTGB: A Comprehensive Benchmark for Dynamic Text-Attributed Graphsy</papertitle>
-                </a>
-                <br>
-                Jiasheng Zhang, <strong>Jialin Chen</strong>, Menglin Yang, Aosong Feng, Shuang Liang, Jie Shao, Rex Ying
-                <br>
-              </p>
-              <div class="paper" id="DTGB">
-                <a href="https://arxiv.org/abs/2406.12072"><img src="https://img.shields.io/badge/-arXiv-grey?logo=gitbook&amp;logoColor=white" alt="Paper" /></a> &nbsp/&nbsp
-                <a href="https://github.com/zjs123/DTGB"><img src="https://img.shields.io/badge/-Github-grey?logo=github" alt="Github" /></a>
-              </div>
-            </td>
-          </tr>
-          
-          <!------------ TempME ----------->
-          <tr>
-            <td class="tdimg" style="padding:20px;width:10%;vertical-align:middle">
-                <div class="paper-box"><div class="paper-box-image"><div><div class="badge">NeurIPS 2023</div>
-                <img src="images/publication/TempME.png" alt="sym" width="100%" /></div></div>
-              </td>
-            </td>
-            <td class="tdcontent" style="padding:20px;width:65%;vertical-align:middle">
-              <p>
-                <a href="https://arxiv.org/abs/2310.19324">
-                  <papertitle>TempME: Towards the Explainability of Temporal Graph Neural Networks via Motif Discovery</papertitle>
-                </a>
-                <br>
-                <strong>Jialin Chen</strong>, Rex Ying
-                <br>
-              </p>
-              <div class="paper" id="TempME">
-                <a href="https://arxiv.org/abs/2310.19324"><img src="https://img.shields.io/badge/-arXiv-grey?logo=gitbook&amp;logoColor=white" alt="Paper" /></a> &nbsp/&nbsp
-                <a href="https://github.com/Cather-Chen/TempME"><img src="https://img.shields.io/badge/-Github-grey?logo=github" alt="Github" /></a>
-              </div>
+        <!------------ Logic Chain ----------->
+        <tr>
+          <td class="tdimg" style="padding:20px;width:10%;vertical-align:middle">
+            <div class="paper-box"><div class="paper-box-image"><div><div class="badge">COLING 2022</div>
+            <img src="images/publication/logical_reasoning.png" alt="Logical Reasoning Graph" width="100%" /></div></div></div>
+          </td>
+          <td class="tdcontent" style="padding:20px;width:80%;vertical-align:middle">
+            <p>
+              <a href="https://arxiv.org/abs/2306.12069">
+                <papertitle>Modeling Hierarchical Reasoning Chains by Linking Discourse Units and Key Phrases for Reading Comprehension</papertitle>
+              </a>
+              <br>
+              <strong>Jialin Chen</strong>, Zhuosheng Zhang, Hai Zhao
+              <br>
+              <em style="color: darkblue;">COLING 2022</em>
+              <br>
+            </p>
+            <div class="paper" id="logic_chain">
+              <a href="https://arxiv.org/abs/2306.12069"><img src="https://img.shields.io/badge/-arXiv-grey?logo=gitbook&amp;logoColor=white" alt="Paper" /></a> &nbsp/&nbsp
+              <a href="https://github.com/cather-chen/logical-reasoning-graph"><img src="https://img.shields.io/badge/-Github-grey?logo=github" alt="Github" /></a>
+            </div>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+  </details>
 
-            </td>
-          </tr>
+  <details class="pub-group" id="pub-group-temporal" open>
+    <summary>
+      <div class="pub-group-summary">
+        <div class="pub-group-title-wrap">
+          <div class="pub-group-title">Temporal Reasoning — From Forecasting to Grounded Decision-Making</div>
+          <div class="pub-group-subtitle">How to reason over evolving signals in context: this theme connects temporal dynamics with semantic grounding to support forecasting, retrieval, and decision-oriented reasoning in real-world settings.</div>
+        </div>
+        <div class="pub-group-meta">
+          <span class="pub-pill">Theme 3</span>
+        </div>
+      </div>
+    </summary>
+    <div class="pub-group-content">
+      <table style="width:100%;border:0;border-spacing:0;border-collapse:separate;margin:0;"><tbody>
+        <!------------ TRACE ----------->
+        <tr>
+          <td class="tdimg" style="padding:20px;width:10%;vertical-align:middle">
+            <div class="paper-box"><div class="paper-box-image"><div><div class="badge">NeurIPS 2025</div>
+            <img src="images/publication/trace.png" alt="TRACE" width="100%" /></div></div></div>
+          </td>
+          <td class="tdcontent" style="padding:20px;width:80%;vertical-align:middle">
+            <p>
+              <a href="https://arxiv.org/abs/2506.09114">
+                <papertitle>TRACE: Grounding Time Series in Context for Multimodal Embedding and Retrieval</papertitle>
+              </a>
+              <br>
+              <strong>Jialin Chen</strong>, Ziyu Zhao, Gaukhar Nurbek, Aosong Feng, Ali Maatouk, Leandros Tassiulas, Yifeng Gao, Rex Ying
+              <br>
+              <em style="color: darkblue;">NeurIPS 2025</em>
+              <br>
+            </p>
+            <div class="paper" id="TRACE">
+              <a href="https://arxiv.org/abs/2506.09114"><img src="https://img.shields.io/badge/-arXiv-grey?logo=gitbook&amp;logoColor=white" alt="Paper" /></a> &nbsp/&nbsp
+              <a href=""><img src="https://img.shields.io/badge/-Github-grey?logo=github" alt="Github" /></a>
+            </div>
+          </td>
+        </tr>
 
+        <!------------ MTBench ----------->
+        <tr>
+          <td class="tdimg" style="padding:20px;width:10%;vertical-align:middle">
+            <div class="paper-box"><div class="paper-box-image"><div><div class="badge">Preprint</div>
+            <img src="images/publication/mtbench.png" alt="MTBench" width="100%" /></div></div></div>
+          </td>
+          <td class="tdcontent" style="padding:20px;width:80%;vertical-align:middle">
+            <p>
+              <a href="https://arxiv.org/abs/2503.16858">
+                <papertitle>MTBench: A Multimodal Time Series Benchmark for Temporal Reasoning and Question Answering</papertitle>
+              </a>
+              <br>
+              <strong>Jialin Chen</strong>, Aosong Feng, Ziyu Zhao, Juan Garza, Gaukhar Nurbek, Cheng Qin, Ali Maatouk, Leandros Tassiulas, Yifeng Gao, Rex Ying
+              <br>
+              <em style="color: darkblue;">Preprint</em>
+              <br>
+            </p>
+            <div class="paper" id="MTBench">
+              <a href="https://arxiv.org/abs/2503.16858"><img src="https://img.shields.io/badge/-arXiv-grey?logo=gitbook&amp;logoColor=white" alt="Paper" /></a> &nbsp/&nbsp
+              <a href="https://github.com/Graph-and-Geometric-Learning/MTBench"><img src="https://img.shields.io/badge/-Github-grey?logo=github" alt="Github" /></a>
+            </div>
+          </td>
+        </tr>
 
-          <!------------ D4Explainer ----------->
-          <tr>
-            <td class="tdimg" style="padding:20px;width:10%;vertical-align:middle">
-                <div class="paper-box"><div class="paper-box-image"><div><div class="badge">NeurIPS 2023</div>
-                <img src="images/publication/D4Explainer.png" alt="sym" width="100%" /></div></div>
-              </td>
-            </td>
-            <td class="tdcontent" style="padding:20px;width:65%;vertical-align:middle">
-              <p>
-                <a href="https://arxiv.org/abs/2310.19321">
-                  <papertitle>D4Explainer: In-distribution Explanations of Graph Neural Network via Discrete Denoising Diffusion</papertitle>
-                </a>
-                <br>
-                <strong>Jialin Chen</strong>, Shirley Wu, Abhijit Gupta, Rex Ying
-                <br>
-              </p>
-              <div class="paper" id="D4Explainer">
-                <a href="https://arxiv.org/abs/2310.19321"><img src="https://img.shields.io/badge/-arXiv-grey?logo=gitbook&amp;logoColor=white" alt="Paper" /></a> &nbsp/&nbsp
-                <a href="https://github.com/Cather-Chen/D4Explainer"><img src="https://img.shields.io/badge/-Github-grey?logo=github" alt="Github" /></a>
-              </div>
-
-            </td>
-          </tr>
-
-
-
-          <!------------ Chain ----------->
-          <tr>
-            <td class="tdimg" style="padding:20px;width:10%;vertical-align:middle">
-                <div class="paper-box"><div class="paper-box-image"><div><div class="badge">COLING 2022</div>
-                <img src="images/publication/logical_reasoning.png" alt="sym" width="100%" /></div></div>
-              </td>
-            </td>
-            <td class="tdcontent" style="padding:20px;width:65%;vertical-align:middle">
-              <p>
-                <a href="https://arxiv.org/abs/2306.12069">
-                  <papertitle>Modeling Hierarchical Reasoning Chains by Linking Discourse Units and Key Phrases for Reading Comprehension</papertitle>
-                </a>
-                <br>
-                <strong>Jialin Chen</strong>, Zhuosheng Zhang, Hai Zhao
-                <br>
-              </p>
-              <div class="paper" id="spherical">
-                <a href="https://arxiv.org/abs/2306.12069"><img src="https://img.shields.io/badge/-arXiv-grey?logo=gitbook&amp;logoColor=white" alt="Paper" /></a> &nbsp/&nbsp
-                <a href="https://github.com/cather-chen/logical-reasoning-graph"><img src="https://img.shields.io/badge/-Github-grey?logo=github" alt="Github" /></a>
-              </div>
-
-            </td>
-          </tr>
-
-          <!------------ Explanation Survey ----------->
-          <tr>
-            <td class="tdimg" style="padding:20px;width:10%;vertical-align:middle">
-                <div class="paper-box"><div class="paper-box-image"><div><div class="badge">IEEE Data Engineering Bulletin 2023</div>
-                <img src="images/publication/generative_survey.png" alt="sym" width="100%" /></div></div>
-              </td>
-            </td>
-            <td class="tdcontent" style="padding:20px;width:65%;vertical-align:middle">
-              <p>
-                <a href="https://arxiv.org/abs/2311.05764">
-                  <papertitle>Generative Explanations for Graph Neural Network: Methods and Evaluations</papertitle>
-                </a>
-                <br>
-                <strong>Jialin Chen</strong>, Kenza Amara, Junchi Yu, Rex Ying
-                <br>
-                <em style="color: darkblue;">IEEE Data Engineering Bulletin, 2023</em>
-                <br>
-              </p>
-              <div class="paper" id="generative_survey">
-                <a href="https://arxiv.org/abs/2311.05764"><img src="https://img.shields.io/badge/-arXiv-grey?logo=gitbook&amp;logoColor=white" alt="Paper" /></a> &nbsp/&nbsp
-                <a href="https://github.com/DS3Lab/GraphFramEx"><img src="https://img.shields.io/badge/-Github-grey?logo=github" alt="Github" /></a>
-              </div>
-            </td>
-          </tr>
-
-          
-          <!-- <tr>
-            <td class="tdimg" style="padding:20px;width:35%;vertical-align:middle">
-              <img src='images/publication/spherical_needlet.png'>
-            </td>
-            <td class="tdcontent" style="padding:20px;width:65%;vertical-align:middle">
-              <p>
-                <a href="https://arxiv.org/abs/2206.10385">
-                  <papertitle>Approximate Equivariance SO(3) Needlet Convolution</papertitle>
-                </a>
-                <br>
-                Kai Yi*, <strong>Jialin Chen*</strong>, Yu Guang Wang, Bingxin Zhou, Pietro Liò, Yanan Fan, Jan Hamann
-                <br>
-                <em>ICML Workshop on Topology, Algebra, and Geometry in Machine Learning</em>, 2022
-                <br>
-              </p>
-              <div class="paper" id="spherical">
-                <a href="https://arxiv.org/abs/2206.10385">paper</a> &nbsp/&nbsp
-                <a href="https://github.com/ykiiiiii/NES">code</a>
-              </div>
-
-            </td>
-          </tr> -->
-
-
-        </tbody></table>
+        <!------------ CCM ----------->
+        <tr>
+          <td class="tdimg" style="padding:20px;width:10%;vertical-align:middle">
+            <div class="paper-box"><div class="paper-box-image"><div><div class="badge">NeurIPS 2024</div>
+            <img src="images/publication/CCM.png" alt="CCM" width="100%" /></div></div></div>
+          </td>
+          <td class="tdcontent" style="padding:20px;width:80%;vertical-align:middle">
+            <p>
+              <a href="https://arxiv.org/abs/2404.01340">
+                <papertitle>From Similarity to Superiority: Channel Clustering for Time Series Forecasting</papertitle>
+              </a>
+              <br>
+              <strong>Jialin Chen</strong>, Jan Eric Lenssen, Aosong Feng, Weihua Hu, Matthias Fey, Leandros Tassiulas, Jure Leskovec, Rex Ying
+              <br>
+              <em style="color: darkblue;">NeurIPS 2024</em>
+              <br>
+            </p>
+            <div class="paper" id="CCM">
+              <a href="https://arxiv.org/abs/2404.01340"><img src="https://img.shields.io/badge/-arXiv-grey?logo=gitbook&amp;logoColor=white" alt="Paper" /></a> &nbsp/&nbsp
+              <a href="https://github.com/Graph-and-Geometric-Learning/TimeSeriesCCM"><img src="https://img.shields.io/badge/-Github-grey?logo=github" alt="Github" /></a>
+            </div>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+  </details>
+</div>
       </div>
 
 <div class="container" id="Experience">
@@ -361,13 +780,23 @@
                   <i class="fas fa-briefcase" style="margin-right:10px; color:#555;"></i>Experience
                 </h2>
         
+                <!-- Student Researcher -->
+                <div style="margin-bottom:25px;">
+                  <span style="font-weight:bold; font-size:1.3em"><i class="fa-brands fa-google" style="color:#4285F4; margin-right:6px;" aria-hidden="true"></i>Student Researcher at Google</span>
+                  <br> <span style="display:inline-block; margin-right:10px; font-size:1.05em; color:#555;"><em>2025.06 - 2026.01</em> | New York, NY</span> <br>
+                  <span style="line-height:1.6;">
+                    <li> Designed a graph-structured LLM framework for <strong style="color: darkblue;">scalable multi-table reasoning</strong>.</li>
+                    <li> Introduced typed tool execution with a <strong style="color: darkblue;">structure-aware post-training pipeline</strong> to improve reasoning robustness and faithfulness, with gains in accuracy, token efficiency, and out-of-schema generalization.</li>
+                  </span>
+                </div>
+
                 <!-- Applied Scientist Intern -->
                 <div style="margin-bottom:25px;">
-                  <span style="font-weight:bold; font-size:1.3em">Applied Scientist Intern</span>
-                  <br> <span style="display:inline-block; margin-right:10px; font-size:1.1em"> Amazon Inc.,  <em> 2024.05 - 2024.12</em></span> <br>
+                  <span style="font-weight:bold; font-size:1.3em"><i class="fa-brands fa-amazon" style="color:#ff9900; margin-right:6px;" aria-hidden="true"></i>Applied Scientist Intern at Amazon</span>
+                  <br> <span style="display:inline-block; margin-right:10px; font-size:1.05em; color:#555;"><em>2024.05 - 2024.12</em> | Seattle, WA</span> <br>
                   <span style="line-height:1.6;">
-                    <li> Proposed a novel <strong style="color: darkblue;">graph-aware retriever</strong> to enhance LLMs’ capabilities in <strong style="color: darkblue;">question answering</strong> and <strong style="color: darkblue;">complex reasoning</strong> on knowledge graphs;</li>
-                    <li> Developed <strong style="color: darkblue;">joint training</strong> of graph retriever and LLM reasoner in Graph RAG pipeline, improved the model's <strong style="color: darkblue;">generalizability to open-domain scenario</strong>.</li>
+                    <li> Built an end-to-end <strong style="color: darkblue;">graph retriever + LLM system</strong> for multi-hop reasoning on large knowledge graphs.</li>
+                    <li> Improved retrieval scalability, precision, and LLM inference efficiency, enabling smaller models to match or outperform proprietary LLMs.</li>
 
                   </span>
                 </div>
@@ -375,13 +804,13 @@
         
                 <!-- Machine Learning Intern -->
                 <div style="margin-bottom:25px;">
-                  <span style="font-weight:bold; font-size:1.3em;">Machine Learning Intern</span>
+                  <span style="font-weight:bold; font-size:1.3em;">Machine Learning Intern at <a href="https://kumo.ai/" target="_blank" rel="noopener noreferrer">Kumo.AI</a></span>
                   <br> 
-                  <span style="display:inline-block; margin-right:10px; font-size:1.1em;">Kumo.AI Inc., <em>2023.05 - 2023.08</em></span> 
+                  <span style="display:inline-block; margin-right:10px; font-size:1.05em; color:#555;"><em>2023.05 - 2023.08</em> | Mountain View, CA</span> 
                   <br>
                   <span style="line-height:1.6;">
-                    <li> Worked on improving <strong style="color: darkblue;">time series forecasting</strong> on retail <strong style="color: darkblue;">tabular dataset</strong>;</li>
-                    <li> Developed an <strong style="color: darkblue;">autoregressive generative model</strong> for custom time series, contributing to <strong style="color: darkblue;">feature development</strong> related to forecasting queries.</li>
+                    <li> Improved <strong style="color: darkblue;">time series forecasting</strong> by balancing per-channel specificity and cross-channel interactions.</li>
+                    <li> Plugged into diverse forecasting backbones to boost accuracy, enable <strong style="color: darkblue;">zero-shot generalization</strong>, and increase model interpretability.</li>
                   </span>
                 </div>
         
@@ -434,7 +863,27 @@
     </div>
 
 <script xml:space="preserve" language="JavaScript">
-hideallbibs();
+if (typeof hideallbibs === 'function') { hideallbibs(); }
+</script>
+
+<script>
+  function togglePublicationGroups(shouldOpen) {
+    var groups = document.querySelectorAll('.pub-group');
+    groups.forEach(function (group) {
+      group.open = shouldOpen;
+    });
+  }
+
+  function focusPublicationGroup(groupId) {
+    var group = document.getElementById(groupId);
+    if (!group) return;
+    group.open = true;
+    group.classList.add('pub-group-flash');
+    group.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.setTimeout(function () {
+      group.classList.remove('pub-group-flash');
+    }, 1200);
+  }
 </script>
 
 <!-- Google Analytics -->
